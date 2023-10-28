@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-AttendanceAppApplication<AttendanceApp>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "springs.AttendanceAppApplication",
+            "projectName": "AttendanceApp",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
