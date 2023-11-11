@@ -14,6 +14,30 @@ width: var(--sidenav);
  transition: ease-in-out .5s;
  overflow: hidden;
 }
+.formsofinfo{
+transition: ease-in-out .5s;
+top:200px;
+width:70%;  
+left:  var(--sidenav);
+position:relative;
+padding:20px;
+box-shadow:0px 0px 12px lightgray;
+border-radius:20px;
+font-family: 'Kanit', sans-serif;
+font-family: 'Secular One', sans-serif;
+}
+.profileimg{
+    transition: ease-in-out .5s;
+    top:150px;
+    width:70%;  
+    left: var(--sidenav);
+    position:relative;
+    padding:20px;
+    box-shadow:0px 0px 12px lightgray;
+    border-radius:20px;
+    font-family: 'Kanit', sans-serif;
+    font-family: 'Secular One', sans-serif;
+}
 
 header{
     height:var(--header-height);
@@ -88,8 +112,7 @@ header{
     }
     table {
         border-collapse: collapse;
-        width: 50%;
-        position:fixed;
+         width: 90%;
         left:450px;
         top: 150px;
     }
@@ -100,6 +123,7 @@ header{
     }
     th {
         background-color: #f2f2f2;
+        color:black;
     }
     .sideb{
         padding-top:0px;
@@ -107,7 +131,6 @@ header{
 
    .buttons{
     left: 450px;
-    position: fixed;
    }
   .dropdown{
     float:right;

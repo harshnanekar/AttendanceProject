@@ -16,3 +16,7 @@
     }
 });
   }
+
+  document.getElementById("logoutbutt").addEventListener("click",()=>{
+      window.location.href = "/Emp/logout";
+  });

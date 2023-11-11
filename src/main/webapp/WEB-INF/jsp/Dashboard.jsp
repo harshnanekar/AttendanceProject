@@ -5,6 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+     <link
+       href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap"
+       rel="stylesheet"
+     />
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -122,6 +127,38 @@
         height:40px;
         border-radius:5px;
         }
+        .alignedmodules{
+            display:flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            margin-left:20px;
+            margin-top:50px;
+
+        }
+        .particularmodule{
+            display:flex;
+            border-radius:20px;
+            justify-content: center;
+            box-shadow:0px 0px 8px lightblue;
+            width:20%;
+            padding:20px;
+            overflow:hidden;
+        }
+        .alignedmodules :hover{
+          background-color: navy;
+          color:white;
+        }
+        .particularmodule :hover{
+            color:white;
+            text-decoration: none;
+        }
+        .moduleflex{
+            font-size:25px; color:navy; 
+            text-decoration:none;  
+            font-family: 'Secular One', 'sans-serif';
+          
+        }
+
     </style>
 </head>
 <body style="padding: 0; box-sizing: border-box; margin: 0;">
@@ -154,6 +191,7 @@
                     </button>
                 </div>
                 
+             
                 
                 <div class="modal-body">
                     <!-- User details content goes here -->
@@ -189,11 +227,80 @@
             
             <span id="attendmessage"></span>
             </div>
+            <div class="alignedmodules">
+                <c:forEach var="dao" items="${gkey}" >
+                    <div class="particularmodule">
+            <a class= "moduleflex" href="${dao.url}" >${dao.moduleinfo}</a>
+        </div>
+         </c:forEach>
+        </div>
+            </div>
         </div>
     </main>
 </body>
 <script>
    
+  automateSignout();
+  function automateSignout() {
+    var timejson = {"10": "22"};
+    var gettime = "10";
+    var currhour=new Date();
+    var getKey = Object.keys(timejson);
+   
+
+    if(getKey == currhour.getHours()){
+
+        var newobj={
+            time: "10:00:00"
+          
+        }
+       
+
+        sendautomatesignout('/EmpCtrl/automatesignout','POST',newobj).then(responseData => {
+           if(responseData.automatesignout == "valid"){
+            console.log("success for automate signout");
+           }
+           if(responseData.automatesignout == "error"){
+            window.location.href ='/Emp/error';
+           }
+        });
+
+
+}
+
+
+}
+
+
+function  sendautomatesignout(url,method,obj){
+    return new Promise((resolve,reject) => {
+    const a={
+        method: method || 'GET',
+       headers:{
+        'Content-Type':'application/json'
+       },
+       body:obj ? JSON.stringify(obj) : undefined,
+    }
+
+    fetch(url,a)
+    .then(response => {
+        if(!response.ok){
+     throw new Error("error occured");
+        }
+        return response.json();
+    })
+    .then(data => {
+        resolve(data);
+    })
+    .catch(error => {
+        reject(error);
+    })
+
+});
+     
+    }
+
+
  
 
 
